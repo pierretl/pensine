@@ -30,6 +30,9 @@ try {
             case "route" :
                 addByRoute();
             break;
+            case "post" :
+                addPost();
+            break;
             default : throw new Exception ("La demande n'est pas valide, vérifiez l'url");
         }
 
