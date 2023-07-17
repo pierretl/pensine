@@ -24,7 +24,7 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
             <h1>php</h1>
         </li>
         <li>
-            <a href="fetch/index.html">javascript</a>
+            <a href="../javascript/">javascript</a>
         </li>
     </ul>
     <hr>
