@@ -41,15 +41,53 @@ async function getFile(url) {
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
         method: 'POST',
-        //mode: 'cors',
-        //cache: 'no-cache',
-        //credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify(data)
+        body: data
     });
 
-    return response.json();
+    return response;
+}
+
+
+
+async function afficheLaListe(data) {
+
+    let listeHtml = '';
+    data.forEach(function(data) {
+        listeHtml += `
+        <li>
+            <p><strong>${data.titre}</strong></p>
+            <ul>`;
+                if (data.url) {listeHtml += `<li><a href="${data.url}" target="_blank">${data.url}</a></li>`}
+                if (data.note) {listeHtml += `<li>${data.note}</li>`}
+                if (data.tag) {listeHtml += `<li>${data.tag}</li>`}
+                if (data.categories) {listeHtml += `<li>${data.categories}</li>`}
+        listeHtml +=`
+            </ul>
+        </li>`;
+    });
+    liste.innerHTML = "";
+    liste.insertAdjacentHTML('afterbegin', listeHtml);
+}
+
+
+
+async function filtreLaListe(categories) {
+    let data = await getData('http://localhost/pensine/api/');
+    data = JSON.parse(data);
+
+    let dataFiltre = [];
+    data.forEach(function(item, index) {
+        if (item.categories === categories) {
+            dataFiltre[index] = data[index];
+        }
+    });
+
+    dataFiltre = dataFiltre.filter(e => String(e).trim()); // supprime la valeur vide
+    console.log(dataFiltre);
+
+    await afficheLaListe(dataFiltre);
+
 }

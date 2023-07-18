@@ -21,10 +21,10 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
 
     <ul>
         <li>
-            <h1>php</h1>
+            <h1>PHP</h1>
         </li>
         <li>
-            <a href="../javascript/">javascript</a>
+            <a href="../javascript/">Javascript</a>
         </li>
     </ul>
     <hr>
@@ -85,7 +85,7 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
         );
 
         if ( !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) ) {
-            print_r($data);
+            //print_r($data);
 
             $options = array(
                 'http' => array(

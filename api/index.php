@@ -21,15 +21,6 @@ try {
             case "allCategorie" :
                 getAllCategorie();
             break;
-            case "form" :
-                addForm();
-            break;
-            case "get" :
-                addByGet();
-            break;
-            case "route" :
-                addByRoute();
-            break;
             case "post" :
                 addPost();
             break;

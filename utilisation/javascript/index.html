@@ -10,40 +10,46 @@
 <body>
     <ul>
         <li>
-            <h1>javascript</h1>
+            <h1>Javascript</h1>
         </li>
         <li>
-            <a href="../php/">php</a>
+            <a href="../php/">PHP</a>
         </li>
     </ul>
     <hr>
 
-    <h2>Lire un fichier</h2>
-    <div id="displayResult"></div>
-    <button type="button" id="reloadDataBtn">Recharger</button>
+    <h2>Filtre</h2>
+    <ul id="filtre"></ul>  
+    <hr>
+
+    <h2>Liste</h2>
+    <ul id="liste"></ul>  
     <hr>
 
     <h2>Lire une image</h2>
     <img src="" alt="" id="imgDisplay">
     <button type="button" id="reloadImgBtn">Recharger</button>
+    <hr>
 
-    <h2>Envoyer un formulaire</h2>
+    <h2>Formulaire</h2>
     <form method="post" id="testForm">
         <label for="titre">Titre</label>
-        <input type="text" name="titre" id="titreField" value="">
+        <input type="text" name="titre" value="">
+        <br>
+        <label for="url">URL</label>
+        <input type="text" name="url" value="">
+        <br>
+        <label for="note">Note</label>
+        <input type="text" name="note" value="">
+        <br>
+        <label for="tag">Tag</label>
+        <input type="text" name="tag" value="">
         <br>
         <label for="categories">Categorie</label>
-        <input type="text" name="categories" id="categoriesField" value="">
+        <input type="text" name="categories" value="">
         <br>
-        <button type="submit" id="titreBtn">Envoyer</button>
+        <button type="submit">Envoyer</button>
     </form>
-    <div id="formStatut"></div>
-    <div id="formAlert"></div>
 </body>
 
 </html>
-
-<!--
-    https://www.youtube.com/watch?v=CkKjMjC8NDc
-
--->

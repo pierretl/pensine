@@ -110,56 +110,9 @@ function getAllCategorie() {
 }
 
 
-
-function addForm() {
-    header("location:./form.php");
-}
-
-function addByGet() {
-    header("location:./get.php");
-}
-
-function addByRoute() {
-    //http://localhost/pensine/api/route/////
-    $urlJson = 'data.json';
-    $url = explode("/", $_SERVER['REQUEST_URI']);
-    //print_r($url);
-
-    //recupère les valeur saisi
-    $dataTitre =        $url[4];
-    $dataUrl =          $url[5];
-    $dataNote =         $url[6];
-    $dataTag =          $url[7];
-    $dataCategories =   $url[8];
-
-    if ( !empty($dataTitre) || !empty($dataUrl) || !empty($dataNote) || !empty($dataTag) || !empty($dataCategories) ) {
-
-        $data = getDataFromJson($urlJson);
-        debug($data);
-    
-        //ajoute une nouel entrée
-        $lengthData = count($data); // compte a partir de 1
-        $data[$lengthData]["titre"] = securite_saisi($dataTitre);
-        $data[$lengthData]["url"] = securite_saisi($dataUrl);
-        $data[$lengthData]["note"] = securite_saisi($dataNote);
-        $data[$lengthData]["tag"] = [securite_saisi($dataTag)];
-        $data[$lengthData]["categories"] = securite_saisi($dataCategories);
-        debug($data);
-    
-        //met a jour le json
-        //updateJason($urlJson, $data);
-    
-        //redirige sur l'api
-        //header("location:../");
-    
-    } else {
-        
-        //redirige sur l'api
-        header("location:../");
-
-    }
-}
-
+/**
+  * @return header ajoute un élément dans data.json
+  */
 function addPost() {
     $urlJson = 'data.json';
 
@@ -172,7 +125,7 @@ function addPost() {
     if ( !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) ) {
 
         $data = getDataFromJson($urlJson);
-        debug($data);
+        //debug($data);
 
         //ajoute une nouel entrée
         $lengthData = count($data); // compte a partir de 1
@@ -181,7 +134,7 @@ function addPost() {
         $data[$lengthData]["note"] = securite_saisi($note);
         $data[$lengthData]["tag"] = [securite_saisi($tag)];
         $data[$lengthData]["categories"] = securite_saisi($categories);
-        debug($data);
+        //debug($data);
 
         //met a jour le json
         updateJason($urlJson, $data);
