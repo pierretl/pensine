@@ -1,9 +1,28 @@
+function listeDesCategories(data) {
+    let categorie = [];
+    data.forEach(function(data, index) {
+        categorie[index] = data.categories;
+    });
+
+    categorie = categorie.filter(e => String(e).trim()); // supprime la valeur vide
+    categorie = [...new Set(categorie)];// supprime les doublons
+    
+    let filtreHtml = '';
+    categorie.forEach(function(cat) {
+        filtreHtml += `
+        <li class="nav-item">
+            <button class="nav-link" type="button" onclick="filtreLaListe('${cat}')">${cat}</button>
+        </li>`;
+    });
+    menuCategories.insertAdjacentHTML('beforeend', filtreHtml);
+}
+
 async function init() {
     let 
         imgElement = document.getElementById('imgDisplay'),
         form = document.getElementById('testForm'),
         reloadImgBtn = document.getElementById('reloadImgBtn'),
-        filtre = document.getElementById('filtre'),
+        menuCategories = document.getElementById('menuCategories'),
         liste = document.getElementById('liste');
 
     async function loadImg() {
@@ -37,18 +56,7 @@ async function init() {
     data = JSON.parse(data);
 
     //affiche la liste des categories
-    let categorie = [];
-    data.forEach(function(data, index) {
-        categorie[index] = data.categories;
-    });
-    categorie = categorie.filter(e => String(e).trim()); // supprime la valeur vide
-    categorie = [...new Set(categorie)];// supprime les doublons
-    //
-    let filtreHtml = `<li><a href="./">Tout</a></li>`;
-    categorie.forEach(function(cat) {
-        filtreHtml += `<li><button type="button" onclick="filtreLaListe('${cat}')">${cat}</button></li>`;
-    });
-    filtre.insertAdjacentHTML('afterbegin', filtreHtml);
+    listeDesCategories(data);
 
 
     // affiche la liste de tous les datas

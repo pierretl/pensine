@@ -56,17 +56,60 @@ async function afficheLaListe(data) {
 
     let listeHtml = '';
     data.forEach(function(data) {
+
+        let hrefCapture = data.capture ? data.capture : 'https://place-hold.it/300x500';
+
+        let templateCategorie = '';
+        if (data.categories) {
+            templateCategorie = `
+                <span class="h6">
+                    <span class="badge bg-primary">${data.categories}</span>
+                </span>
+            `;
+        }
+
+        let templateUrl = '';
+        if (data.url) {
+            templateUrl = `<a class="card-link" href="${data.url}" target="_blank">${data.url}</a>`;
+        }
+
+        let templateNote = '';
+        if (data.note) {
+            templateNote = `<p class="card-text">${data.note}</p>`;
+        }
+
+        let templateTag = '';
+        if (data.tag) {
+
+            templateTag = '<ul class="list-unstyled d-flex flex-wrap">';
+
+            data.tag.forEach(function(tagName) {
+                templateTag += `
+                    <li>
+                        <span class="badge rounded-pill text-bg-secondary">${tagName}</span>
+                    </li>
+                `;
+            })
+            
+            templateTag += '</ul>';
+        }
+
         listeHtml += `
-        <li>
-            <p><strong>${data.titre}</strong></p>
-            <ul>`;
-                if (data.url) {listeHtml += `<li><a href="${data.url}" target="_blank">${data.url}</a></li>`}
-                if (data.note) {listeHtml += `<li>${data.note}</li>`}
-                if (data.tag) {listeHtml += `<li>${data.tag}</li>`}
-                if (data.categories) {listeHtml += `<li>${data.categories}</li>`}
-                if (data.capture) {listeHtml += `<li>${data.capture}</li>`}
-        listeHtml +=`
-            </ul>
+        <li class="card" style="width:300px;">
+            <div class="d-flex">
+                <div class="flex-shrink-1">
+                    <img width="150" src="${hrefCapture}" class="img-fluid rounded-start" alt="${hrefCapture}">
+                </div>
+                <div class="p-2">
+                    <p class="h4 card-title">
+                        ${data.titre}
+                        ${templateCategorie}
+                    </p>
+                    ${templateUrl}
+                    ${templateNote}
+                    ${templateTag}
+                </div>
+            </div>
         </li>`;
     });
     liste.innerHTML = "";
