@@ -1,8 +1,12 @@
 <?php
-require_once("lib.php");
+require_once("lib/dotEnv.php");
+require_once("lib/lib.php");
 
-// http://localhost/pensine/api/
-// http://localhost/pensine/api/categorie/a
+// Charge les variables d'environnement
+(new DotEnv(__DIR__ . '/.env'))->load();
+
+
+
 
 try {
     if (!empty($_GET['demande'])) {
