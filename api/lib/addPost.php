@@ -6,7 +6,7 @@
   function addPost() {
     $urlJson = getenv('DATA');
 
-    $apikey = $_POST["apikey"]; // a vérif
+    $apikey = $_POST["apikey"];
     $titre = $_POST["titre"];
     $url = $_POST["url"];
     $note = $_POST["note"];
@@ -14,7 +14,16 @@
     $categories = $_POST["categories"];
     $capture = $_POST["capture"];
 
-    if ( !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
+    if ( !empty($apikey) || !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
+
+
+        // Vérification de l'apikey
+        if ( $apikey !== getenv('APIKEY')) {
+            
+            header("location:../"); //redirige sur l'api
+            exit;
+
+        };
 
         $data = getDataFromJson($urlJson);
         //debug($data);

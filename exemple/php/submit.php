@@ -11,7 +11,7 @@ $categories =   isset($_POST['categories']) ? $_POST['categories'] : "";
 $capture =      isset($_POST['capture']) ? $_POST['capture'] : "";
 
 $data = array(
-    'apikey' =>  $apikey, 
+    'apikey' =>  $apikey,
     'titre' =>  $titre, 
     'url' => $url, 
     'note' => $note, 
