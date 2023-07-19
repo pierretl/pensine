@@ -51,7 +51,7 @@ function sendJson($data) {
   * @return header un json de tous les datas
   */
 function getAllData(){
-    sendJson(getDataFromJson('data.json', false));
+    sendJson(getDataFromJson('data/data.json', false));
 }
 
 
@@ -62,7 +62,7 @@ function getAllData(){
   */
 function getDataByCategorie($categorie){
 
-    $allData = getDataFromJson('data.json');
+    $allData = getDataFromJson('data/data.json');
     $dataFiltre = [];
 
     for ($i=0; $i < count($allData); $i++) {
@@ -85,7 +85,7 @@ function getDataByCategorie($categorie){
   */
 function getAllCategorie() {
 
-    $allData = getDataFromJson('data.json');
+    $allData = getDataFromJson('data/data.json');
     $allCategorie = [];
 
     for ($i=0; $i < count($allData); $i++) {
@@ -114,8 +114,9 @@ function getAllCategorie() {
   * @return header ajoute un élément dans data.json
   */
 function addPost() {
-    $urlJson = 'data.json';
+    $urlJson = 'data/data.json';
 
+    $apikey = $_POST["apikey"]; // a vérif
     $titre = $_POST["titre"];
     $url = $_POST["url"];
     $note = $_POST["note"];

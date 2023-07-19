@@ -1,0 +1,40 @@
+[
+    {
+      "titre": "un",
+      "url": "yo.com",
+      "note": "",
+      "tag": "",
+      "categories": "a",
+      "capture": ""
+    },
+    {
+      "titre": "deux",
+      "url": "deux.fr",
+      "note": "",
+      "tag": [
+        1,
+        2,
+        3
+      ],
+      "categories": "",
+      "capture": ""
+    },
+    {
+      "titre": "trois",
+      "url": "yo.be",
+      "note": "",
+      "tag": [
+        "g"
+      ],
+      "categories": "a",
+      "capture": "e"
+    },
+    {
+      "titre": "quatre",
+      "url": "totoi.ch",
+      "note": "",
+      "tag": "",
+      "categories": "b",
+      "capture": ""
+    }
+  ]

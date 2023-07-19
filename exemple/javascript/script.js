@@ -26,7 +26,7 @@ async function init() {
         liste = document.getElementById('liste');
 
     async function loadImg() {
-        imgElement.src = await getFile('http://localhost/pensine/api/img/ptl9.png')       
+        imgElement.src = await getFile('http://localhost/pensine/api/data/img/ptl9.png')       
     }
   
     async function addData(e) {
