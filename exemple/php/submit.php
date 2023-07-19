@@ -2,6 +2,7 @@
 
 $apiPost = 'http://localhost/pensine/api/post';
 
+$apikey =       isset($_POST['apikey']) ? $_POST['apikey'] : "";
 $titre =        isset($_POST['titre']) ? $_POST['titre'] : "";
 $url =          isset($_POST['url']) ? $_POST['url'] : "";
 $note =         isset($_POST['note']) ? $_POST['note'] : "";
@@ -10,6 +11,7 @@ $categories =   isset($_POST['categories']) ? $_POST['categories'] : "";
 $capture =      isset($_POST['capture']) ? $_POST['capture'] : "";
 
 $data = array(
+    'apikey' =>  $apikey, 
     'titre' =>  $titre, 
     'url' => $url, 
     'note' => $note, 
@@ -18,7 +20,7 @@ $data = array(
     'capture' => $capture
 );
 
-if ( !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
+if ( !empty($apikey) || !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
     //print_r($data);
 
     $options = array(

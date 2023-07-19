@@ -128,6 +128,11 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
         <form method="post" action="submit.php">
 
             <div class="mb-3">
+                <label class="form-label" for="apikey">Clé API</label>
+                <input class="form-control" type="text" id="apikey" name="apikey" value="">
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label" for="titre">Titre</label>
                 <input class="form-control" type="text" id="titre" name="titre" value="">
             </div>

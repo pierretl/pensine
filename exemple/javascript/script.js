@@ -33,6 +33,7 @@ async function init() {
         e.preventDefault();
 
         let data = new URLSearchParams({
+            apikey: form.elements['apikey'].value,
             titre: form.elements['titre'].value,
             url: form.elements['url'].value,
             note: form.elements['note'].value,
