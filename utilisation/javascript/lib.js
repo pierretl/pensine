@@ -64,6 +64,7 @@ async function afficheLaListe(data) {
                 if (data.note) {listeHtml += `<li>${data.note}</li>`}
                 if (data.tag) {listeHtml += `<li>${data.tag}</li>`}
                 if (data.categories) {listeHtml += `<li>${data.categories}</li>`}
+                if (data.capture) {listeHtml += `<li>${data.capture}</li>`}
         listeHtml +=`
             </ul>
         </li>`;

@@ -15,110 +15,154 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP json_decode</title>
+    <title>PHP utilise Pensine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <ul>
-        <li>
-            <h1>PHP</h1>
-        </li>
-        <li>
-            <a href="../javascript/">Javascript</a>
-        </li>
-    </ul>
-    <hr>
 
-    <h2>Filtre</h2>
-    <ul>
-        <li><a href="./">Tout</a></li>
-        <?php foreach ($allCategorie as $categorie) : ?>
-            <li><a href="?categorie=<?= $categorie ?>"><?= $categorie ?></a></li>
-        <?php endforeach; ?>
-    </ul>
-    <hr>
+<nav class="navbar navbar-dark sticky-top bg-dark">
+    <div class="container-fluid justify-content-start">
+        <span class="navbar-brand" >Pensine avec</span>
+        <div class="navbar-nav dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                PHP
+            </a>
+            <ul class="dropdown-menu" style="position: absolute;">
+                <li><a class="dropdown-item" href="../javascript/">JavaScript</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-    <h2>Liste</h2>
-    <?php if($data) { ?>
-        <ul>
-            <?php foreach ($data as $item) : ?>
-                <li>
-                <p>
-                        <strong><?= $item->titre ?></strong>
-                </p>
-                    <ul>
-                        <li><a href="<?= $item->url ?>" target="_blank"><?= $item->url ?></a></li>
-                        <?php if($item->note) { ?>
-                            <li><?= $item->note ?></li>
-                        <?php } ?>
-                        <?php if($item->tag) { ?>
-                            <li>
-                                <?php foreach ($item->tag as $tag) : ?>
-                                    <?php echo $tag ?>
-                                <?php endforeach; ?>
-                            </li>
-                        <?php } ?>
-                        <li><?= $item->categories ?></li>
-                    </ul>
+
+
+<div class="row mx-1 my-2">
+
+
+
+
+
+
+
+    <div class="col-12 col-md-8 order-2">
+
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="./">Tout</a>
+            </li>
+            <?php foreach ($allCategorie as $categorie) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="?categorie=<?= $categorie ?>"><?= $categorie ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>
-    <?php } ?>
-    <hr>
 
-    <h2>Formulaire</h2>
-    <?php
-        $apiPost = 'http://localhost/pensine/api/post';
 
-        $titre =        isset($_POST['titre']) ? $_POST['titre'] : "";
-        $url =          isset($_POST['url']) ? $_POST['url'] : "";
-        $note =         isset($_POST['note']) ? $_POST['note'] : "";
-        $tag =          isset($_POST['tag']) ? $_POST['tag'] : "";
-        $categories =   isset($_POST['categories']) ? $_POST['categories'] : "";
-        
-        $data = array(
-            'titre' =>  $titre, 
-            'url' => $url, 
-            'note' => $note, 
-            'tag' => $tag, 
-            'categories' => $categories
-        );
+        <?php if($data) { ?>
 
-        if ( !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) ) {
-            //print_r($data);
+            <ul class="list-unstyled d-flex flex-wrap gap-3">
 
-            $options = array(
-                'http' => array(
-                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method'  => 'POST',
-                    'content' => http_build_query($data)
-                )
-            );
-            $context  = stream_context_create($options);
-            $result = file_get_contents($apiPost, false, $context);
+                <?php foreach ($data as $item) : ?>
+                    <li class="card" style="width:300px;">
+                        <div class="d-flex">
+                            <div class="flex-shrink-1">
+                                <?php if($item->capture) { ?>
+                                    <img width="150" src="" class="img-fluid rounded-start" alt="<?= $item->capture ?>">
+                                <?php } else { ?>
+                                    <img width="150" src="https://place-hold.it/300x500" class="img-fluid rounded-start" alt="">
+                                <?php } ?>
+                            </div>
+                            <div class="p-2">
 
-            header("location:./");
-        }
+                                <p class="h4 card-title">
+                                    <?= $item->titre ?>
+                                    <?php if($item->categories) { ?>
+                                        <span class="h6">
+                                            <span class="badge bg-primary"><?= $item->categories ?></span>
+                                        </span>
+                                    <?php } ?>
+                                </p>
 
-    ?>
-    <form method="post">
-        <label for="titre">Titre</label>
-        <input type="text" name="titre" value="">
-        <br>
-        <label for="url">URL</label>
-        <input type="text" name="url" value="">
-        <br>
-        <label for="note">Note</label>
-        <input type="text" name="note" value="">
-        <br>
-        <label for="tag">Tag</label>
-        <input type="text" name="tag" value="">
-        <br>
-        <label for="categories">Categorie</label>
-        <input type="text" name="categories" value="">
-        <br>
-        <button type="submit" id="titreBtn">Envoyer</button>
-    </form>
+                                <?php if($item->url) { ?>
+                                    <a class="card-link" href="<?= $item->url ?>" target="_blank"><?= $item->url ?></a>
+                                <?php } ?>
+
+                                <?php if($item->note) { ?>
+                                    <p class="card-text"><?= $item->note ?></p>
+                                <?php } ?>
+
+                                <?php if($item->tag) { ?>
+                                    <ul class="list-unstyled d-flex flex-wrap">
+                                        <?php foreach ($item->tag as $tag) : ?>
+                                            <li>
+                                                <span class="badge rounded-pill text-bg-secondary"><?php echo $tag ?></span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php } ?>
+                                
+                                <!--<p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>-->
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+
+            </ul>
+
+        <?php } ?>
+
+    </div>
+
+
+
+    <div class="col-12 col-md-4 order-1">
+
+        <div class="py-1">
+            <h2 class="h5">Formulaire d'ajout</h2>
+        </div>
+
+
+        <form method="post" action="submit.php">
+
+            <div class="mb-3">
+                <label class="form-label" for="titre">Titre</label>
+                <input class="form-control" type="text" id="titre" name="titre" value="">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="url">URL</label>
+                <input class="form-control" type="text" id="url" name="url" value="">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="note">Note</label>
+                <input class="form-control" type="text" id="note" name="note" value="">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="tag">Tag</label>
+                <input class="form-control" type="text" id="tag" name="tag" value="">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="categories">Categorie</label>
+                <input class="form-control" type="text" id="categories" name="categories" value="">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="capture">Capture</label>
+                <input class="form-control" type="text" id="capture" name="capture" value="">
+            </div>
+
+            <button type="submit" id="titreBtn" class="btn btn-primary">Envoyer</button>
+        </form>
+
+    </div>
+
+</div>
 
 
 </body>

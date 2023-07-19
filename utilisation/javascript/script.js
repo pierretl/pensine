@@ -19,6 +19,7 @@ async function init() {
             note: form.elements['note'].value,
             tag: form.elements['tag'].value,
             categories: form.elements['categories'].value,
+            capture: form.elements['capture'].value,
         });
 
         data = data.toString();
@@ -26,6 +27,8 @@ async function init() {
         postData('http://localhost/pensine/api/post', data)
         .then(response => {
             console.log(response);
+            location.reload(); // recharge la page
+            form.reset(); //vide le formulaire
         });
     }
 

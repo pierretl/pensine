@@ -4,7 +4,8 @@
     "url": "yo.com",
     "note": "",
     "tag": "",
-    "categories": "a"
+    "categories": "a",
+    "capture": ""
   },
   {
     "titre": "deux",
@@ -15,7 +16,8 @@
       2,
       3
     ],
-    "categories": ""
+    "categories": "",
+    "capture": ""
   },
   {
     "titre": "trois",
@@ -24,13 +26,15 @@
     "tag": [
       "g"
     ],
-    "categories": "a"
+    "categories": "a",
+    "capture": ""
   },
   {
     "titre": "quatre",
     "url": "totoi.ch",
     "note": "",
     "tag": "",
-    "categories": "b"
+    "categories": "b",
+    "capture": ""
   }
 ]

@@ -121,8 +121,9 @@ function addPost() {
     $note = $_POST["note"];
     $tag = $_POST["tag"];
     $categories = $_POST["categories"];
+    $capture = $_POST["capture"];
 
-    if ( !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) ) {
+    if ( !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
 
         $data = getDataFromJson($urlJson);
         //debug($data);
@@ -134,6 +135,7 @@ function addPost() {
         $data[$lengthData]["note"] = securite_saisi($note);
         $data[$lengthData]["tag"] = [securite_saisi($tag)];
         $data[$lengthData]["categories"] = securite_saisi($categories);
+        $data[$lengthData]["capture"] = securite_saisi($capture);
         //debug($data);
 
         //met a jour le json
