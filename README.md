@@ -9,4 +9,4 @@ Les données sont stockées dans un fichier json et une API permet de les manipu
 |Route|Résultat|
 |--------|-----|
 |`http://localhost/pensine/api/`|Ensemble des données|
-|`http://localhost/pensine/api/categorie/{label}`|Affiche uniquement les données qui ont comme catégorie `{label}`|
+|`http://localhost/pensine/api/categorie/label`|Affiche uniquement les données qui ont comme catégorie `label`|
