@@ -1,5 +1,5 @@
 <?php
-require_once("lib/_index.php");
+require_once("lib/_include.php");
 
 // Charge les variables d'environnement
 (new DotEnv(__DIR__ . '/.env'))->load();
