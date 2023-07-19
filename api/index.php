@@ -1,11 +1,8 @@
 <?php
-require_once("lib/dotEnv.php");
-require_once("lib/lib.php");
+require_once("lib/_index.php");
 
 // Charge les variables d'environnement
 (new DotEnv(__DIR__ . '/.env'))->load();
-
-
 
 
 try {
