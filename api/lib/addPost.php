@@ -19,12 +19,26 @@
 
         // Vérification de l'apikey
         if ( $apikey !== getenv('APIKEY')) {
-            
             header("location:../"); //redirige sur l'api
             exit;
-
         };
 
+        // Vérification de l'extention du fichier en base 64
+        $target_extension = explode('/', mime_content_type($capture))[1];
+        $target_file = "";
+        if (
+            $target_extension == 'jpg' || 
+            $target_extension == 'jpeg' || 
+            $target_extension == 'png'
+            ) {
+            // convertis et upload la capture
+            $target_dir = "data/img/";
+            $target_file = $target_dir . createSlug($titre) . '.png';
+            file_put_contents($target_file, file_get_contents($capture));
+        }
+
+
+        //
         $data = getDataFromJson($urlJson);
         //debug($data);
 
@@ -35,7 +49,7 @@
         $data[$lengthData]["note"] = securite_saisi($note);
         $data[$lengthData]["tag"] = [securite_saisi($tag)];
         $data[$lengthData]["categories"] = securite_saisi($categories);
-        $data[$lengthData]["capture"] = securite_saisi($capture);
+        $data[$lengthData]["capture"] = $target_file;
         //debug($data);
 
         //met a jour le json

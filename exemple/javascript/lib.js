@@ -98,7 +98,7 @@ async function afficheLaListe(data) {
         <li class="card" style="width:300px;">
             <div class="d-flex">
                 <div class="flex-shrink-1">
-                    <img width="150" src="${hrefCapture}" class="img-fluid rounded-start" alt="${hrefCapture}">
+                    <img width="150" src="http://localhost/pensine/api/${hrefCapture}" class="img-fluid rounded-start" alt="${hrefCapture}">
                 </div>
                 <div class="p-2">
                     <p class="h4 card-title">

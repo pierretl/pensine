@@ -10,6 +10,32 @@ $tag =          isset($_POST['tag']) ? $_POST['tag'] : "";
 $categories =   isset($_POST['categories']) ? $_POST['categories'] : "";
 $capture =      isset($_POST['capture']) ? $_POST['capture'] : "";
 
+
+
+//print_r($_FILES);
+if( isset($_POST['capture']) || isset($_FILES['capture']) ) {
+    $errors=array();
+    $file_size=$_FILES['capture']['size'];
+    $file_tmp= $_FILES['capture']['tmp_name'];
+
+    $type = pathinfo($file_tmp, PATHINFO_EXTENSION);
+    $data = file_get_contents($file_tmp);
+    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+    if($file_size > 2097152) {
+        $errors[]= 'File size must be under 2mb';
+    }
+
+    if(empty($errors)) {
+        $capture = $base64;
+    } 
+
+   
+}
+
+
+
+
 $data = array(
     'apikey' =>  $apikey,
     'titre' =>  $titre, 
@@ -19,6 +45,8 @@ $data = array(
     'categories' => $categories,
     'capture' => $capture
 );
+
+
 
 if ( !empty($apikey) || !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
     //print_r($data);

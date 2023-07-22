@@ -61,16 +61,16 @@
         </div>
 
 
-        <form method="post" id="testForm">
+        <form method="post" id="testForm" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label class="form-label" for="apikey">Clé API</label>
-                <input class="form-control" type="text" id="apikey" name="apikey" value="">
+                <input class="form-control" type="text" id="apikey" name="apikey" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="titre">Titre</label>
-                <input class="form-control" type="text" id="titre" name="titre" value="">
+                <input class="form-control" type="text" id="titre" name="titre" required>
             </div>
 
             <div class="mb-3">
@@ -95,7 +95,7 @@
 
             <div class="mb-3">
                 <label class="form-label" for="capture">Capture</label>
-                <input class="form-control" type="text" id="capture" name="capture" value="">
+                <input class="form-control" type="text" id="capture" name="capture" value="a faire : input file + envoie en base 64">
             </div>
 
             <button type="submit" class="btn btn-primary">Envoyer</button>

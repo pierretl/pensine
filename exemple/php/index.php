@@ -1,5 +1,7 @@
 <?php
 
+$apiurl = "http://localhost/pensine/api/";
+
 if (isset($_GET['categorie'])) {
     $data = json_decode(file_get_contents("http://localhost/pensine/api/categorie/".$_GET['categorie']));
 } else {
@@ -70,7 +72,7 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
                         <div class="d-flex">
                             <div class="flex-shrink-1">
                                 <?php if($item->capture) { ?>
-                                    <img width="150" src="" class="img-fluid rounded-start" alt="<?= $item->capture ?>">
+                                    <img width="150" src="<?= $apiurl . $item->capture ?>" class="img-fluid rounded-start" alt="<?= $item->capture ?>">
                                 <?php } else { ?>
                                     <img width="150" src="https://place-hold.it/300x500" class="img-fluid rounded-start" alt="">
                                 <?php } ?>
@@ -125,16 +127,16 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
         </div>
 
 
-        <form method="post" action="submit.php">
+        <form method="post" action="submit.php" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label class="form-label" for="apikey">Clé API</label>
-                <input class="form-control" type="text" id="apikey" name="apikey" value="">
+                <input class="form-control" type="text" id="apikey" name="apikey" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="titre">Titre</label>
-                <input class="form-control" type="text" id="titre" name="titre" value="">
+                <input class="form-control" type="text" id="titre" name="titre" required>
             </div>
 
             <div class="mb-3">
@@ -159,11 +161,19 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
 
             <div class="mb-3">
                 <label class="form-label" for="capture">Capture</label>
-                <input class="form-control" type="text" id="capture" name="capture" value="">
+                <input class="form-control" type="file" id="capture" name="capture">
             </div>
 
             <button type="submit" id="titreBtn" class="btn btn-primary">Envoyer</button>
         </form>
+
+
+
+        
+
+
+
+
 
     </div>
 
