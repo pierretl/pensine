@@ -17,6 +17,17 @@ function listeDesCategories(data) {
     menuCategories.insertAdjacentHTML('beforeend', filtreHtml);
 }
 
+
+
+const convertToBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+});
+
+
+
 async function init() {
     let 
         imgElement = document.getElementById('imgDisplay'),
@@ -39,7 +50,7 @@ async function init() {
             note: form.elements['note'].value,
             tag: form.elements['tag'].value,
             categories: form.elements['categories'].value,
-            capture: form.elements['capture'].value,
+            capture: await convertToBase64(form.elements['capture'].files[0]),
         });
 
         data = data.toString();
