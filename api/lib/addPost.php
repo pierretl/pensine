@@ -7,6 +7,7 @@
     $urlJson = getenv('DATA');
 
     $apikey = $_POST["apikey"];
+    $faviconUrl = $_POST["faviconUrl"];
     $titre = $_POST["titre"];
     $url = $_POST["url"];
     $note = $_POST["note"];
@@ -14,7 +15,7 @@
     $categories = $_POST["categories"];
     $capture = $_POST["capture"];
 
-    if ( !empty($apikey) || !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
+    if ( !empty($apikey) || !empty($faviconUrl) || !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
 
 
         // Vérification de l'apikey
@@ -44,6 +45,7 @@
 
         //ajoute une nouel entrée
         $lengthData = count($data); // compte a partir de 1
+        $data[$lengthData]["faviconUrl"] = securite_saisi($faviconUrl);
         $data[$lengthData]["titre"] = securite_saisi($titre);
         $data[$lengthData]["url"] = securite_saisi($url);
         $data[$lengthData]["note"] = securite_saisi($note);

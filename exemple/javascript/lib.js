@@ -59,6 +59,13 @@ async function afficheLaListe(data) {
 
         let hrefCapture = data.capture ? data.capture : 'https://place-hold.it/300x500';
 
+        let templateFavicon = '';
+        if (data.faviconUrl) {
+            templateFavicon = `
+                <img src="${data.faviconUrl}" alt="" width="32">
+            `;
+        }
+
         let templateCategorie = '';
         if (data.categories) {
             templateCategorie = `
@@ -95,13 +102,14 @@ async function afficheLaListe(data) {
         }
 
         listeHtml += `
-        <li class="card" style="width:300px;">
+        <li class="card" style="width:400px;">
             <div class="d-flex">
                 <div class="flex-shrink-1">
                     <img width="150" src="http://localhost/pensine/api/${hrefCapture}" class="img-fluid rounded-start" alt="${hrefCapture}">
                 </div>
                 <div class="p-2">
                     <p class="h4 card-title">
+                        ${templateFavicon}
                         ${data.titre}
                         ${templateCategorie}
                     </p>

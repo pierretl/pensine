@@ -1,5 +1,6 @@
 [
     {
+      "faviconUrl": "",
       "titre": "un",
       "url": "yo.com",
       "note": "",
@@ -8,6 +9,7 @@
       "capture": "data/img/2023-07-22_02-11-28_un.png"
     },
     {
+      "faviconUrl": "https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico",
       "titre": "deux",
       "url": "deux.fr",
       "note": "",
@@ -20,6 +22,7 @@
       "capture": "data/img/2023-07-22_02-11-46_deux.png"
     },
     {
+      "faviconUrl": "",
       "titre": "trois",
       "url": "yo.be",
       "note": "",
@@ -30,6 +33,7 @@
       "capture": "data/img/2023-07-22_02-10-55_trois.png"
     },
     {
+      "faviconUrl": "",
       "titre": "quatre",
       "url": "totoi.ch",
       "note": "",

@@ -68,7 +68,7 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
             <ul class="list-unstyled d-flex flex-wrap gap-3">
 
                 <?php foreach ($data as $item) : ?>
-                    <li class="card" style="width:300px;">
+                    <li class="card" style="width:400px;">
                         <div class="d-flex">
                             <div class="flex-shrink-1">
                                 <?php if($item->capture) { ?>
@@ -80,6 +80,9 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
                             <div class="p-2">
 
                                 <p class="h4 card-title">
+                                    <?php if($item->faviconUrl) { ?>
+                                        <img src="<?= $item->faviconUrl ?>" alt="" width="32">
+                                    <?php } ?>
                                     <?= $item->titre ?>
                                     <?php if($item->categories) { ?>
                                         <span class="h6">
@@ -132,6 +135,11 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
             <div class="mb-3">
                 <label class="form-label" for="apikey">Clé API</label>
                 <input class="form-control" type="text" id="apikey" name="apikey" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="faviconUrl">Favicon URL</label>
+                <input class="form-control" type="text" id="faviconUrl" name="faviconUrl">
             </div>
 
             <div class="mb-3">

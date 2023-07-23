@@ -45,6 +45,7 @@ async function init() {
 
         let data = new URLSearchParams({
             apikey: form.elements['apikey'].value,
+            faviconUrl: form.elements['faviconUrl'].value,
             titre: form.elements['titre'].value,
             url: form.elements['url'].value,
             note: form.elements['note'].value,
