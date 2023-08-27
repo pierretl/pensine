@@ -127,13 +127,14 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
 
         <div class="py-1">
             <h2 class="h5">Formulaire d'ajout</h2>
+            <p>* : Champs obligatoires</p>
         </div>
 
 
         <form method="post" action="submit.php" enctype="multipart/form-data">
 
             <div class="mb-3">
-                <label class="form-label" for="apikey">Clé API</label>
+                <label class="form-label" for="apikey">Clé API*</label>
                 <input class="form-control" type="text" id="apikey" name="apikey" required>
             </div>
 
@@ -143,7 +144,7 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
             </div>
 
             <div class="mb-3">
-                <label class="form-label" for="titre">Titre</label>
+                <label class="form-label" for="titre">Titre*</label>
                 <input class="form-control" type="text" id="titre" name="titre" required>
             </div>
 
