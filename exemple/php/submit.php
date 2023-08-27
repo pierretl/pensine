@@ -11,28 +11,24 @@ $categories =   isset($_POST['categories']) ? $_POST['categories'] : "";
 $capture =      isset($_POST['capture']) ? $_POST['capture'] : "";
 
 
-
 //print_r($_FILES);
-if( isset($_POST['capture']) || isset($_FILES['capture']) ) {
-    $errors=array();
-    $file_size=$_FILES['capture']['size'];
-    $file_tmp= $_FILES['capture']['tmp_name'];
+$errors=array();
+$file_size=$_FILES['capture']['size'];
+$file_tmp= $_FILES['capture']['tmp_name'];
 
+if (!empty($file_tmp)) {
     $type = pathinfo($file_tmp, PATHINFO_EXTENSION);
     $data = file_get_contents($file_tmp);
     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
-    if($file_size > 2097152) {
-        $errors[]= 'File size must be under 2mb';
-    }
-
-    if(empty($errors)) {
-        $capture = $base64;
-    } 
-
-   
 }
 
+if($file_size > 2097152) {
+    $errors[]= 'File size must be under 2mb';
+}
+
+if(empty($errors)) {
+    $capture = $base64;
+} 
 
 
 

@@ -19,6 +19,16 @@ function listeDesCategories(data) {
 
 
 
+const traitementImage = async function(file) {
+    if (file) {
+        return await convertToBase64(file)
+    } else {
+        return '';
+    }
+}
+
+
+
 const convertToBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -51,7 +61,7 @@ async function init() {
             note: form.elements['note'].value,
             tag: form.elements['tag'].value,
             categories: form.elements['categories'].value,
-            capture: await convertToBase64(form.elements['capture'].files[0]),
+            capture: await traitementImage(form.elements['capture'].files[0]),
         });
 
         data = data.toString();

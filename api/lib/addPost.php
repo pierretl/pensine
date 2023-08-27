@@ -13,9 +13,9 @@
     $note = $_POST["note"];
     $tag = $_POST["tag"];
     $categories = $_POST["categories"];
-    $capture = $_POST["capture"];
+    $capture = isset($_POST["capture"]) ? $_POST["capture"] : "";
 
-    if ( !empty($apikey) || !empty($faviconUrl) || !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) || !empty($capture) ) {
+    if ( !empty($apikey) || !empty($faviconUrl) || !empty($titre) || !empty($url) || !empty($note) || !empty($tag) || !empty($categories) ) {
 
 
         // Vérification de l'apikey
@@ -25,18 +25,21 @@
         };
 
         // Vérification de l'extention du fichier en base 64
-        $target_extension = explode('/', mime_content_type($capture))[1];
         $target_file = "";
-        if (
-            $target_extension == 'jpg' || 
-            $target_extension == 'jpeg' || 
-            $target_extension == 'png'
-            ) {
-            // convertis et upload la capture
-            $target_dir = "data/img/";
-            $target_file = $target_dir . createSlug($titre) . '.png';
-            file_put_contents($target_file, file_get_contents($capture));
-        }
+        if ( $capture !="" ){
+            $target_extension = explode('/', mime_content_type($capture))[1];
+            
+            if (
+                $target_extension == 'jpg' || 
+                $target_extension == 'jpeg' || 
+                $target_extension == 'png'
+                ) {
+                // convertis et upload la capture
+                $target_dir = "data/img/";
+                $target_file = $target_dir . createSlug($titre) . '.png';
+                file_put_contents($target_file, file_get_contents($capture));
+            }
+    }
 
 
         //
