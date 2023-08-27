@@ -57,7 +57,7 @@ async function afficheLaListe(data) {
     let listeHtml = '';
     data.forEach(function(data) {
 
-        let hrefCapture = data.capture ? data.capture : 'https://place-hold.it/300x500';
+        let hrefCapture = data.capture ? `http://localhost/pensine/api/${data.capture}` : 'https://place-hold.it/300x500';
 
         let templateFavicon = '';
         if (data.faviconUrl) {
@@ -105,7 +105,7 @@ async function afficheLaListe(data) {
         <li class="card" style="width:400px;">
             <div class="d-flex">
                 <div class="flex-shrink-1">
-                    <img width="150" src="http://localhost/pensine/api/${hrefCapture}" class="img-fluid rounded-start" alt="${hrefCapture}">
+                    <img width="150" src="${hrefCapture}" class="img-fluid rounded-start" alt="">
                 </div>
                 <div class="p-2">
                     <p class="h4 card-title">
