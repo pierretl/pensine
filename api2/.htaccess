@@ -1,0 +1,21 @@
+# Attention RewriteEngine fonctionne avec xampp, mais pas avec le plugin PHP SERVEUR de VSCode
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?demande=$1
+
+
+
+# bloque l'acces au fichier
+<Files ~ ".env">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+
+
+# 
+Options -Indexes
+ErrorDocument 403 http://localhost/pensine/api/
