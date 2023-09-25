@@ -1,5 +1,7 @@
 <?php
 
+require_once("controllers/createSlug.php");
+
 /**
   * @return header ajoute un élément dans data.json
   */
@@ -31,7 +33,23 @@ function addBookmarks(){
         //ajoute un nouveau bookmark
         $lengthData = count($data);
 
-        $target_file = ""; // a faire
+        //gestion de la capture,
+        //Vérification de l'extention du fichier en base 64
+        $target_file = "";
+        if ( $capture !="" ){
+            $target_extension = explode('/', mime_content_type($capture))[1];
+            
+            if (
+                $target_extension == 'jpg' || 
+                $target_extension == 'jpeg' || 
+                $target_extension == 'png'
+            ) {
+                // convertis et upload la capture
+                $target_dir = getenv('CAPTURE_DIR');
+                $target_file = $target_dir . createSlug($titre) . '.png';
+                file_put_contents($target_file, file_get_contents($capture));
+            }
+        }
 
         $data[$lengthData]["faviconUrl"] = securite_saisi($faviconUrl);
         $data[$lengthData]["titre"] = securite_saisi($titre);

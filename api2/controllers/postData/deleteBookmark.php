@@ -19,6 +19,12 @@ function deleteBookmarks(){
         //data actuel
         $data = getDataFromJson($urlJson);
 
+        //suppression de la capture
+        $img = $data[$_POST["id"]]["capture"];
+        if ($img != "") {
+            unlink($img);
+        }
+
         //supprime le bookmark
         unset($data[$_POST["id"]]);
 

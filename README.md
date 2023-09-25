@@ -33,9 +33,22 @@ Les données sont stockées dans un fichier json et une API permet de les manipu
 
 ### POST
 
-|Route|Form-encode obligatoire|Form-encode facultatif|note|
-|--------|-----|-----|-----|
-|`http://localhost/pensine/api2/addBookmark/`|apikey, url|faviconUrl, titre, note, tag*1, categories, capture| Ajout un bookmark|
-|`http://localhost/pensine/api2/deleteBookmark/`|apikey, id|| Supprime le bookmark `id`|
+#### Ajouter un bookmark
 
-*1 : tag est un `string`, chaque tag est séparé par une virgule
+|Form-encode|Note|`http://localhost/pensine/api2/addBookmark/`|
+|---------------|-----|-|
+| `apikey` | Obligatoire: `string` |
+| `url` | Obligatoire: `string`, url |
+| `faviconUrl` | Facultatif: `string`, url |
+| `titre` | Facultatif :  `string`|
+| `note` | Facultatif:  `string` |
+| `tag` | Facultatif:  `string`, séparé par une virgule |
+| `categories` | Facultatif  `string` |
+| `capture` | Facultatif  `string` image en base 64, exemple :<br>`data:image/jpeg;base64,/9j/4AAQSkZJRgAB...` |
+
+#### Supprime le bookmark `id`
+
+|Form-encode|Note|`http://localhost/pensine/api2/addBookmark/`|
+|---------------|-----|-|
+| `apikey` | Obligatoire, `string` |
+| `id` | Obligatoire, `number` |
