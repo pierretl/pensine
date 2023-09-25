@@ -37,7 +37,7 @@ function addBookmarks(){
         $data[$lengthData]["titre"] = securite_saisi($titre);
         $data[$lengthData]["url"] = securite_saisi($url);
         $data[$lengthData]["note"] = securite_saisi($note);
-        $data[$lengthData]["tag"] = [securite_saisi($tag)];
+        $data[$lengthData]["tag"] = explode(",", securite_saisi($tag));
         $data[$lengthData]["categories"] = securite_saisi($categories);
         $data[$lengthData]["capture"] = $target_file;
 
