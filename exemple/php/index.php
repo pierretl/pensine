@@ -1,20 +1,20 @@
 <?php
 
-$apiurl = "http://localhost/pensine/api2/";
+$apiurl = "http://localhost/pensine/api/";
 
 if (isset($_GET['categorie'])) {
-    $data = json_decode(file_get_contents("http://localhost/pensine/api2/categorie/".$_GET['categorie']));
+    $data = json_decode(file_get_contents("http://localhost/pensine/api/categorie/".$_GET['categorie']));
 } else {
-    $data = json_decode(file_get_contents("http://localhost/pensine/api2"));
+    $data = json_decode(file_get_contents("http://localhost/pensine/api"));
 }
 
 if (isset($_GET['tag'])) {
-    $data = json_decode(file_get_contents("http://localhost/pensine/api2/tag/".$_GET['tag']));
+    $data = json_decode(file_get_contents("http://localhost/pensine/api/tag/".$_GET['tag']));
 }
 
-$allCategorie = json_decode(file_get_contents("http://localhost/pensine/api2/allCategorie"));
+$allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allCategorie"));
 
-$allTag = json_decode(file_get_contents("http://localhost/pensine/api2/allTag"));
+$allTag = json_decode(file_get_contents("http://localhost/pensine/api/allTag"));
 
 ?>
 
@@ -23,7 +23,7 @@ $allTag = json_decode(file_get_contents("http://localhost/pensine/api2/allTag"))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP utilise Pensine - API V2</title>
+    <title>PHP utilise Pensine</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
@@ -35,7 +35,7 @@ $allTag = json_decode(file_get_contents("http://localhost/pensine/api2/allTag"))
         <span class="navbar-brand" >Pensine avec</span>
         <div class="navbar-nav dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                PHP - API V2
+                PHP
             </a>
             <ul class="dropdown-menu" style="position: absolute;">
                 <li><a class="dropdown-item" href="../javascript/">JavaScript</a></li>

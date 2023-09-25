@@ -24,18 +24,18 @@ Les données sont stockées dans un fichier json et une API permet de les manipu
 
 |Route|Résultat|
 |--------|-----|
-|`http://localhost/pensine/api2/`|Ensemble des données|
-|`http://localhost/pensine/api2/categorie/{terme}`|Affiche uniquement les données qui ont comme catégorie `terme`|
-|`http://localhost/pensine/api2/allCategorie`|Liste de toute les catégories|
-|`http://localhost/pensine/api2/allTag/`|Liste de tous les tags|
-|`http://localhost/pensine/api2/tag/{terme}`|Affiche uniquement les données qui ont comme tag `terme`|
+|`http://localhost/pensine/api/`|Ensemble des données|
+|`http://localhost/pensine/api/categorie/{terme}`|Affiche uniquement les données qui ont comme catégorie `terme`|
+|`http://localhost/pensine/api/allCategorie`|Liste de toute les catégories|
+|`http://localhost/pensine/api/allTag/`|Liste de tous les tags|
+|`http://localhost/pensine/api/tag/{terme}`|Affiche uniquement les données qui ont comme tag `terme`|
 
 
 ### POST
 
 #### Ajouter un bookmark
 
-|Form-encode|Note|`http://localhost/pensine/api2/addBookmark/`|
+|Form-encode|Note|`http://localhost/pensine/api/addBookmark/`|
 |---------------|-----|-|
 | `apikey` | Obligatoire: `string` |
 | `url` | Obligatoire: `string`, url |
@@ -48,7 +48,7 @@ Les données sont stockées dans un fichier json et une API permet de les manipu
 
 #### Supprime le bookmark `id`
 
-|Form-encode|Note|`http://localhost/pensine/api2/addBookmark/`|
+|Form-encode|Note|`http://localhost/pensine/api/addBookmark/`|
 |---------------|-----|-|
 | `apikey` | Obligatoire, `string` |
 | `id` | Obligatoire, `number` |
