@@ -1,14 +1,20 @@
 <?php
 
-$apiurl = "http://localhost/pensine/api/";
+$apiurl = "http://localhost/pensine/api2/";
 
 if (isset($_GET['categorie'])) {
-    $data = json_decode(file_get_contents("http://localhost/pensine/api/categorie/".$_GET['categorie']));
+    $data = json_decode(file_get_contents("http://localhost/pensine/api2/categorie/".$_GET['categorie']));
 } else {
-    $data = json_decode(file_get_contents("http://localhost/pensine/api"));
+    $data = json_decode(file_get_contents("http://localhost/pensine/api2"));
 }
 
-$allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allCategorie"));
+if (isset($_GET['tag'])) {
+    $data = json_decode(file_get_contents("http://localhost/pensine/api2/tag/".$_GET['tag']));
+}
+
+$allCategorie = json_decode(file_get_contents("http://localhost/pensine/api2/allCategorie"));
+
+$allTag = json_decode(file_get_contents("http://localhost/pensine/api2/allTag"));
 
 ?>
 
@@ -17,7 +23,7 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP utilise Pensine</title>
+    <title>PHP utilise Pensine - API V2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
@@ -29,7 +35,7 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
         <span class="navbar-brand" >Pensine avec</span>
         <div class="navbar-nav dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                PHP
+                PHP - API V2
             </a>
             <ul class="dropdown-menu" style="position: absolute;">
                 <li><a class="dropdown-item" href="../javascript/">JavaScript</a></li>
@@ -53,11 +59,22 @@ $allCategorie = json_decode(file_get_contents("http://localhost/pensine/api/allC
 
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="./">Tout</a>
+                <a class="nav-link" href="./">Toutes les catégories</a>
             </li>
             <?php foreach ($allCategorie as $categorie) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="?categorie=<?= $categorie ?>"><?= $categorie ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="./">Tous les tag</a>
+            </li>
+            <?php foreach ($allTag as $tag) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="?tag=<?= $tag ?>"><?= $tag ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>

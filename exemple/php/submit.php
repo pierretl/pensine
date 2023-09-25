@@ -1,6 +1,6 @@
 <?php
 
-$apiPost = 'http://localhost/pensine/api/post';
+$apiPost = 'http://localhost/pensine/api2/addBookmark';
 
 $apikey =       isset($_POST['apikey']) ? $_POST['apikey'] : "";
 $titre =        isset($_POST['titre']) ? $_POST['titre'] : "";
